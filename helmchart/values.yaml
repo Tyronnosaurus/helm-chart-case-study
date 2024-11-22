@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: case-study
+  tag: "latest"
+  pullPolicy: Never
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5000
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+  hosts:
+    - host: casestudy.local.helloworld.io
+      paths:
+        - path: /
+          pathType: Prefix

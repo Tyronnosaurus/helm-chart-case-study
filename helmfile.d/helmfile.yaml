@@ -1,0 +1,23 @@
+helmDefaults:
+  timeout: 600
+  wait: true
+  atomic: true
+
+releases:
+
+
+  - name: case-study
+    namespace: default
+    chart: ../helmchart
+    installed: true
+    values:
+      - replicaCount: 1
+      - service:
+          type: ClusterIP
+      - ingress:
+          enabled: true
+          hosts:
+            - host: casestudy.local.helloworld.io
+              paths:
+                - path: /
+                  pathType: Prefix
